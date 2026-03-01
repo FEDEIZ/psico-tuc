@@ -1,4 +1,4 @@
-// JavaScript principal para la página de aterrizaje de psicóloga
+l// JavaScript principal para la página de aterrizaje de psicóloga
 // Se cargará con el atributo `defer`, por lo que se ejecuta después del renderizado del DOM.
 
 'use strict';
@@ -226,17 +226,6 @@ if (serviceModal) {
         btn.addEventListener('click', closeModal);
     });
 
-    // Añadir botones "Más información" a cada servicio
-    document.querySelectorAll('.service-card').forEach((card, index) => {
-        const title = card.querySelector('.service-title').textContent;
-        const description = card.querySelector('.service-description').textContent;
-        const button = document.createElement('button');
-        button.className = 'button button-secondary';
-        button.textContent = 'Más información';
-        button.setAttribute('aria-label', `Más información sobre ${title}`);
-        button.addEventListener('click', () => openModal(title, description));
-        card.appendChild(button);
-    });
 }
 
 // Mejorar accesibilidad del acordeón nativo (FAQ)

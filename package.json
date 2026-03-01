@@ -4,7 +4,8 @@
   "description": "",
   "main": "sw.js",
   "scripts": {
-    "start": "browser-sync start --server --files '**/*.html, **/*.css, **/*.js, **/*.json' --port 3000",
+    "start": "live-server --port=3000",
+    "browser-sync": "browser-sync start --server --files '**/*.html,**/*.css,**/*.js,**/*.json' --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1",
     "debug": "node debug.js"
   },
@@ -15,6 +16,7 @@
     "axe-core": "^4.11.1",
     "browser-sync": "^3.0.4",
     "lighthouse": "^13.0.3",
+    "live-server": "^1.2.2",
     "web-vitals": "^5.1.0"
   }
 }
