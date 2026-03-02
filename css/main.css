@@ -253,6 +253,7 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: transform var(--transition-speed) var(--transition-easing);
 }
 
 .hamburger::before,
@@ -263,6 +264,7 @@ p {
     height: 2px;
     background-color: var(--color-brown-dark);
     left: 0;
+    transition: transform var(--transition-speed) var(--transition-easing);
 }
 
 .hamburger::before {
@@ -271,6 +273,16 @@ p {
 
 .hamburger::after {
     bottom: -6px;
+}
+
+.menu-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+}
+.menu-toggle[aria-expanded="true"] .hamburger::before {
+    transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .hamburger::after {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 .nav-menu {
@@ -597,11 +609,45 @@ p {
     margin-bottom: var(--space-xs);
     font-size: 1.125rem;
 }
-
 .timeline-content p {
     color: var(--color-gray-dark);
     line-height: 1.6;
 }
+
+/* ==========================================================================
+   Formation Cards
+   ========================================================================== */
+
+.formation-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.formation-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform var(--transition-speed) var(--transition-easing);
+}
+
+.formation-card:hover {
+    transform: translateY(-5px);
+}
+
+.formation-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.formation-title {
+    color: var(--color-brown-dark);
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
 
 /* ==========================================================================
    How It Works Section

@@ -1,4 +1,4 @@
-l// JavaScript principal para la página de aterrizaje de psicóloga
+// JavaScript principal para la página de aterrizaje de psicóloga
 // Se cargará con el atributo `defer`, por lo que se ejecuta después del renderizado del DOM.
 
 'use strict';
@@ -14,6 +14,9 @@ if (menuToggle && navMenu) {
         navMenu.classList.toggle('active');
     });
 }
+
+// Endpoint para envío de formulario (reemplazar con el endpoint real de Formspree)
+const FORM_ENDPOINT = 'https://formspree.io/f/mnjbyrzz';
 
 // Validación accesible del formulario de contacto
 const contactForm = document.getElementById('contact-form');
@@ -122,21 +125,61 @@ if (contactForm) {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
             
-            // Simular envío (en producción aquí iría fetch)
-            setTimeout(() => {
-                // Mostrar mensaje de éxito
-                const successMsg = document.createElement('p');
-                successMsg.className = 'success-message';
-                successMsg.textContent = '¡Gracias! Tu mensaje ha sido enviado. Te responderé pronto.';
-                successMsg.setAttribute('role', 'alert');
-                successMsg.setAttribute('aria-live', 'assertive');
-                contactForm.innerHTML = '';
-                contactForm.appendChild(successMsg);
-                
-                // Restaurar botón (opcional, ya que el formulario desapareció)
+            // Real POST al endpoint de Formspree
+            const formData = new FormData(contactForm);
+            const params = new URLSearchParams();
+            for (const [key, value] of formData) {
+                params.append(key, value);
+            }
+            // Añadir dirección de respuesta (reply‑to)
+            const emailValue = formData.get('email');
+            if (emailValue) {
+                params.append('_replyto', emailValue);
+            }
+            
+            // Debug: verificar parámetros enviados
+            console.log('Formspree submission params:', params.toString());
+            
+            fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: params.toString()
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    const successMsg = document.createElement('p');
+                    successMsg.className = 'success-message';
+                    successMsg.textContent = '¡Gracias! Tu mensaje ha sido enviado. Te responderé pronto.';
+                    successMsg.setAttribute('role', 'alert');
+                    successMsg.setAttribute('aria-live', 'assertive');
+                    contactForm.innerHTML = '';
+                    contactForm.appendChild(successMsg);
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .catch(error => {
+                // Mostrar mensaje de error
+                const errorMsg = document.createElement('p');
+                errorMsg.className = 'error-message';
+                errorMsg.textContent = 'Hubo un problema al enviar el mensaje. Por favor, inténtalo nuevamente más tarde.';
+                errorMsg.setAttribute('role', 'alert');
+                contactForm.insertBefore(errorMsg, contactForm.firstChild);
+                // Restaurar botón
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
-            }, 1000);
+            })
+            .finally(() => {
+                // Restaurar botón si no se ha restaurado ya (en caso de éxito el formulario se reemplaza)
+                if (contactForm.contains(submitBtn)) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
         } else {
             // Enfocar el primer campo con error
             const firstError = contactForm.querySelector('[aria-invalid="true"]');
