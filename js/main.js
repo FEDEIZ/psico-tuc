@@ -131,11 +131,11 @@ if (contactForm) {
             for (const [key, value] of formData) {
                 params.append(key, value);
             }
-            // Añadir dirección de respuesta (reply‑to)
-            const emailValue = formData.get('email');
-            if (emailValue) {
-                params.append('_replyto', emailValue);
-            }
+            // // Añadir dirección de respuesta (reply‑to)
+            // const emailValue = formData.get('email');
+            // if (emailValue) {
+            //     params.append('_replyto', emailValue);
+            // }
             
             // Debug: verificar parámetros enviados
             console.log('Formspree submission params:', params.toString());
