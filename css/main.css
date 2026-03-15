@@ -1133,6 +1133,16 @@ p {
     outline: 3px solid var(--color-accent-blue);
 }
 
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+    /* Estilos principales en inline JS, aquí añadimos estados de focus */
+}
+
+.whatsapp-float:focus {
+    outline: 3px solid var(--color-accent-blue);
+    outline-offset: 2px;
+}
+
 /* Botón «volver arriba» */
 .back-to-top {
     /* Los estilos básicos ya están inline, solo añadimos hover/focus */
