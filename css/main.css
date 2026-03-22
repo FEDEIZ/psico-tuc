@@ -61,6 +61,10 @@ h6 {
     overflow-wrap: break-word;
 }
 
+article h3{
+    margin: 0;
+}
+
 /* ==========================================================================
    CSS Variables (Design Tokens)
    ========================================================================== */
@@ -227,7 +231,7 @@ p {
 
 .logo {
     text-align: center;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-sm)/2;
 }
 
 .site-title {
@@ -389,7 +393,7 @@ p {
     color: var(--color-white);
 }
 
-.hero-image {
+.hero-image, .about-image {
     display: block;
     height: 300px;
     border-radius: var(--radius-lg);
@@ -399,7 +403,7 @@ p {
     position: relative;
 }
 
-.hero-image img {
+.hero-image img, .about-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -427,21 +431,6 @@ p {
     gap: var(--space-xl);
 }
 
-.about-image {
-    display: block;
-    height: 300px;
-    border-radius: var(--radius-lg);
-    flex-shrink: 0;
-    overflow: hidden;
-    position: relative;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
 
 .about-text {
     flex: 1;
@@ -614,6 +603,7 @@ p {
     color: var(--color-brown-dark);
     margin-bottom: var(--space-xs);
     font-size: 1.125rem;
+    margin-bottom: 0;
 }
 .timeline-content p {
     color: var(--color-gray-dark);
@@ -636,6 +626,9 @@ p {
     padding: var(--space-lg);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform var(--transition-speed) var(--transition-easing);
 }
 
@@ -711,6 +704,7 @@ p {
 .contact-wrapper {
     display: flex;
     flex-direction: column;
+    padding-inline: 1rem;
     gap: var(--space-xl);
     margin-bottom: var(--space-xl);
 }
@@ -970,10 +964,16 @@ p {
 
 /* Tablet (≥768px) */
 @media (min-width: 768px) {
+
+    .container {
+        padding-inline: 1rem;
+    }
+
     .header-inner {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
     }
 
     .logo {
@@ -1011,8 +1011,21 @@ p {
         flex: 1;
     }
 
+    .about-content {
+    flex-direction: row;
+    align-items: start;
+    }
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-image {
+        height: 300px; /* Nueva altura del contenedor para tablet */
+    }
+
+    .hero-image img {
+        object-position: bottom center; /* muestra la parte superior */
     }
 }
 
@@ -1030,18 +1043,17 @@ p {
         font-size: 3rem;
     }
 
+    .hero-image {
+        height: 500px; /* Nueva altura del contenedor para tablet */
+    }
+
+    .hero-image img {
+        object-position: bottom center; /* muestra la parte superior */
+    }
+
     .about-content {
         flex-direction: row;
         align-items: center;
-    }
-
-    .about-image {
-        width: 40%;
-        height: auto;
-    }
-
-    .about-image img {
-        height: auto;
     }
 
     .services-grid {
