@@ -24,7 +24,7 @@ Basado en las reglas de contenido (`content.md`) y la habilidad `psychology‑la
 
 | Sección | Contenido obligatorio | Notas |
 |---------|----------------------|-------|
-| **Header / Hero** | Nombre completo, credenciales (ej. “Lic. Florencia Daiana Lazo – Psicóloga Clínica”), frase de valor (“Acompañándote en tu bienestar emocional”), botón principal (“Reserva una consulta gratuita”). | Imagen de fondo calmada (oficina, naturaleza abstracta). |
+| **Header / Hero** | Nombre completo, credenciales (ej. “Lic. Florencia Daiana Lazo – Psicóloga - M.P. 4079”), frase de valor (“Acompañándote en tu bienestar emocional”), botón principal (“Reserva una consulta gratuita”). | Imagen de fondo calmada (oficina, naturaleza abstracta). |
 | **Sobre la Psicóloga** | Biografía breve que destaque formación, licencias, experiencia, enfoque (psicoanálisis). Foto profesional (sonriente, cercana). | Incluir elementos que generen confianza (años de ejercicio, membresías). |
 | **Servicios** | Lista de servicios: terapia individual para adolescentes, jóvenes y adultos. Especialidades: ansiedad, depresión, trastornos de la personalidad, orientación vocacional, etc. | Cada servicio con icono y descripción concisa. |
 | **Modalidad de Atención** | Presencial (consultorio en Barrio Sur) y remota (videollamada). Para sesiones remotas, el pago debe realizarse minutos antes de iniciar la sesión. | Informar claramente las opciones y el procedimiento de pago. |
