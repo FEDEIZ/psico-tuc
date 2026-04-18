@@ -150,6 +150,10 @@ if (contactForm) {
             })
             .then(response => {
                 if (response.ok) {
+                    // Enviar evento a Google Tag Manager (GA4 → Google Ads)
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({ event: 'form_submit_ok' });
+
                     // Mostrar mensaje de éxito
                     const successMsg = document.createElement('p');
                     successMsg.className = 'success-message';
